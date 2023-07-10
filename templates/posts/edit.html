@@ -16,6 +16,15 @@
         <textarea id="post_content" name="post_content">{{post.post_content}}</textarea>
     </section>
     <section>
+        {% for tag in tags %}
+        <section>
+            <input type="checkbox" id="tag_{{tag.id}}" name="tags" value="{{tag.id}}" 
+            {% if tag in post.tags %} checked {% endif %}>
+            <label for="tag_{{tag.id}}">{{tag.name}}</label>
+        </section>
+        {% endfor %}
+    </section>
+    <section>
         <a href="/users/{{post.user_id}}">Cancel</a>
         <button type="submit">Add Post</button>
     </section>
